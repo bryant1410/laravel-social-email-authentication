@@ -129,7 +129,7 @@ class AuthController extends Controller {
         if(!$code)
             return redirect()->route('auth.login')
                 ->with('status', 'danger')
-                ->with('message', 'You did not share your profile data with our socail app.');
+                ->with('message', 'You did not share your profile data with our social app.');
 
         if(!$user->email)
         {
