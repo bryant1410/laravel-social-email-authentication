@@ -1,27 +1,67 @@
-## Laravel PHP Framework
+# Laravel Social and Email Authentication
 
-[![Build Status](https://travis-ci.org/laravel/framework.svg)](https://travis-ci.org/laravel/framework)
-[![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Stable Version](https://poser.pugx.org/laravel/framework/v/stable.svg)](https://packagist.org/packages/laravel/framework)
-[![Latest Unstable Version](https://poser.pugx.org/laravel/framework/v/unstable.svg)](https://packagist.org/packages/laravel/framework)
-[![License](https://poser.pugx.org/laravel/framework/license.svg)](https://packagist.org/packages/laravel/framework)
+This project is related to tutorial from [Codingo Tuts].
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable, creative experience to be truly fulfilling. Laravel attempts to take the pain out of development by easing common tasks used in the majority of web projects, such as authentication, routing, sessions, queueing, and caching.
+In tutorial I am creating Laravel application  with email authentication and user roles, but I am also using [Laravel Socialite] for Facebook and Twitter logins.
+At the end of this tutorial you will be able to use any other social provider in matter of seconds.
 
-Laravel is accessible, yet powerful, providing powerful tools needed for large, robust applications. A superb inversion of control container, expressive migration system, and tightly integrated unit testing support give you the tools you need to build any application with which you are tasked.
+### What is covered
+Everything is covered there so new Laravel developers can grasp it quickly. I am following simple plan while I am developing:
 
-## Official Documentation
+  - [Creating views for application]
+  - [Creating migrations and models related to users and roles]
+  - [User seeder with some dummy users]
+  - [Middleware for administrator and user roles]
+  - [Routes and AuthController]
+  - [Creating table and model for Social logins]
+  - [Creating Social Logic]
 
-Documentation for the framework can be found on the [Laravel website](http://laravel.com/docs).
+This plan is not strict and if you are familiar with something you may just skip that part.
 
-## Contributing
+### Implementing new Social Providers in under 20 seconds
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](http://laravel.com/docs/contributions).
+Main beauty is modular approach in implementing new Socialite providers. Application uses to routes one for redirecting user to certain social site and other to accept response from that site:
 
-## Security Vulnerabilities
+```php
+s = 'social.';
+Route::get('/social/redirect/{provider}',   ['as' => $s . 'redirect',   'uses' => 'Auth\AuthController@getSocialRedirect']);
+Route::get('/social/handle/{provider}',     ['as' => $s . 'handle',     'uses' => 'Auth\AuthController@getSocialHandle']);
+```
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell at taylor@laravel.com. All security vulnerabilities will be promptly addressed.
+To add new social provider you just need to insert new element in services.php like this:
 
-### License
+```php
+    'facebook' => [
+        'client_id'     => env('FB_ID'),
+        'client_secret' => env('FB_SECRET'),
+        'redirect'      => env('FB_REDIRECT')
+    ],
 
-The Laravel framework is open-sourced software licensed under the [MIT license](http://opensource.org/licenses/MIT)
+    'twitter' => [
+        'client_id'     => env('TW_ID'),
+        'client_secret' => env('TW_SECRET'),
+        'redirect'      => env('TW_REDIRECT')
+    ],
+```
+
+And now you need to create new login link using following route:
+```php
+route('social.redirect', ['provider' => 'provider_key_from_services']); //example
+route('social.redirect', ['provider' => 'facebook']);
+route('social.redirect', ['provider' => 'twitter']);
+```
+
+###Todo's
+Project is not over, I will publish few more tutorials regarding this matter. You can expect:
+  - Handling when user disallows social app access
+  - Taking emails of users who sign-up over Twitter and other providers which don't share that data
+  - User account actions, like change password, change email etc
+
+[Creating views for application]:http://tuts.codingo.me/laravel-social-and-email-authentication/#creating-views
+[Creating migrations and models related to users and roles]:http://tuts.codingo.me/laravel-social-and-email-authentication/#migrations-users
+[User seeder with some dummy users]:http://tuts.codingo.me/laravel-social-and-email-authentication/#user-role-seeders
+[Middleware for administrator and user roles]:http://tuts.codingo.me/laravel-social-and-email-authentication/#middleware
+[Routes and AuthController]:http://tuts.codingo.me/laravel-social-and-email-authentication/#routes
+[Creating table and model for Social logins]:http://tuts.codingo.me/laravel-social-and-email-authentication/#pull-socialite
+[Creating Social Logic]:http://tuts.codingo.me/laravel-social-and-email-authentication/#social-logic
+[Codingo Tuts]:http://tuts.codingo.me/laravel-social-and-email-authentication

@@ -101,11 +101,11 @@ class AuthController extends Controller {
             'password'      => $input['password']
         ];
 
-        $this->userRepository->register($data);
+        $user = $this->userRepository->register($data);
 
-        return redirect()->route('auth.login')
-            ->with('status', 'success')
-            ->with('message', 'You are registered successfully. Please login.');
+        Auth::login($user);
+
+        return redirect()->to('/user');
 
     }
 

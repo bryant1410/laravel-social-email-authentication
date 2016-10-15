@@ -29,6 +29,8 @@ class UserRepository {
         $role = Role::whereName('user')->first();
         $user->assignRole($role);
 
+        return $user;
+
     }
 
     public function resetPassword( User $user  )

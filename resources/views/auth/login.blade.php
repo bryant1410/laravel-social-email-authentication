@@ -1,8 +1,10 @@
 @extends('layouts.main')
 
 @section('head')
-    {!! HTML::style('/assets/css/signin.css') !!}
-    {!! HTML::style('/assets/css/parsley.css') !!}
+
+    <link rel="stylesheet" href="/assets/css/signin.css">
+    <link rel="stylesheet" href="/assets/css/parsley.css">
+
 @stop
 
 @section('content')
@@ -66,6 +68,6 @@
         };
     </script>
 
-    {!! HTML::script('/assets/plugins/parsley.min.js') !!}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/parsley.js/2.5.0/parsley.min.js"></script>
 
 @stop

@@ -13,10 +13,10 @@
     <title>Laravel Social and Email Authentication</title>
 
     <!-- Bootstrap core CSS -->
-    {!! HTML::style('/assets/plugins/bootstrap/css/bootstrap.min.css') !!}
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css"></link>
 
     <!-- Custom styles for this template -->
-    {!! HTML::style('/assets/css/navbar-static-top.css') !!}
+    <link rel="stylesheet" href="/assets/css/navbar-static-top.css"></link>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -71,9 +71,9 @@
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-{!! HTML::script('/assets/plugins/bootstrap/js/bootstrap.min.js') !!}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-{!! HTML::script('/assets/js/ie10-viewport-bug-workaround.js') !!}
+<script src="/assets/js/ie10-viewport-bug-workaround.js"></script>
 
 @yield('footer')
 
