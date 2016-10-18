@@ -82,9 +82,7 @@
 
         <p class="or-social">Or Use Social Login</p>
 
-        <a href="{{ route('social.redirect', ['provider' => 'facebook']) }}" class="btn btn-lg btn-primary btn-block facebook" type="submit">Facebook</a>
-        <a href="{{ route('social.redirect', ['provider' => 'twitter']) }}" class="btn btn-lg btn-primary btn-block twitter" type="submit">Twitter</a>
-        <a href="{{ route('social.redirect', ['provider' => 'google']) }}" class="btn btn-lg btn-primary btn-block google" type="submit">Google</a>
+        @include('partials.socials')
 
         {!! Form::close() !!}
 
@@ -96,7 +94,12 @@
     <script type="text/javascript">
         window.ParsleyConfig = {
             errorsWrapper: '<div></div>',
-            errorTemplate: '<div class="alert alert-danger parsley" role="alert"></div>'
+            errorTemplate: '<span class="error-text"></span>',
+            classHandler: function (el) {
+                return el.$element.closest('input');
+            },
+            successClass: 'valid',
+            errorClass: 'invalid'
         };
     </script>
 

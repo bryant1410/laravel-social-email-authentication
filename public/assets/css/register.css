@@ -62,10 +62,25 @@
     margin-top:10px;
 }
 .google{
-    background-color: #2196F3;
-    border-color: #2196F3;
+    background-color: #DD4B39;
+    border-color: #DD4B39;
 }
 .google:hover{
-    background-color: #42A5F5;
-    border-color:#42A5F5;
+    background-color: #e15f4f;
+    border-color:#e15f4f;
+}
+.github{
+    background-color: #4183C4;
+    border-color: #4183C4;
+}
+.github:hover{
+    background-color: #5490ca;
+    border-color:#5490ca;
+}
+.error-text{
+    color: #F44336;
+    transition: .2s opacity ease-out,.2s color ease-out;
+}
+.margin-bottom-10{
+    margin-bottom:10px;
 }
