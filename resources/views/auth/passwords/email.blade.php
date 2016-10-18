@@ -6,7 +6,7 @@
 
 @section('content')
 
-        {!! Form::open(['url' => route('auth.password-post'), 'class' => 'form-signin' ] ) !!}
+        {!! Form::open(['url' => url('/password/email'), 'class' => 'form-signin' ] ) !!}
 
         @include('includes.status')
 

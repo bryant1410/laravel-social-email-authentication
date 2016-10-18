@@ -1,10 +1,7 @@
 <?php
-
 namespace App\Http\Middleware;
-
 use Closure;
 use Illuminate\Contracts\Auth\Guard;
-
 class Authenticate
 {
     /**
@@ -13,7 +10,6 @@ class Authenticate
      * @var Guard
      */
     protected $auth;
-
     /**
      * Create a new filter instance.
      *
@@ -24,7 +20,6 @@ class Authenticate
     {
         $this->auth = $auth;
     }
-
     /**
      * Handle an incoming request.
      *
@@ -37,21 +32,18 @@ class Authenticate
     {
         if(!$this->auth->check())
         {
-            return redirect()->route('auth.login')
+            return redirect()->to('/login')
                 ->with('status', 'success')
                 ->with('message', 'Please login.');
         }
-
         if($role == 'all')
         {
             return $next($request);
         }
-
         if( $this->auth->guest() || !$this->auth->user()->hasRole($role))
         {
             abort(403);
         }
-
         return $next($request);
     }
 }

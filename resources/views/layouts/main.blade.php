@@ -48,11 +48,11 @@
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 @if(!Auth::check())
-                <li><a href="{{ route('auth.login') }}">Login</a></li>
-                <li><a href="{{ route('auth.register') }}">Register</a></li>
+                <li><a href="{{ url('/login') }}">Login</a></li>
+                <li><a href="{{ url('/register') }}">Register</a></li>
                 @else
                 <li><a href="#">{{ Auth::user()->first_name }}</a></li>
-                <li><a href="{{ route('authenticated.logout') }}">Logout</a></li>
+                <li><a href="{{ url('/logout') }}">Logout</a></li>
                 @endif
             </ul>
         </div><!--/.nav-collapse -->

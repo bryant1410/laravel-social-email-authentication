@@ -7,7 +7,7 @@
 
 @section('content')
 
-        {!! Form::open(['url' => route('auth.register-post'), 'class' => 'form-signin', 'data-parsley-validate' ] ) !!}
+        {!! Form::open(['url' => url('/register'), 'class' => 'form-signin', 'data-parsley-validate' ] ) !!}
 
         @include('includes.errors')
 
