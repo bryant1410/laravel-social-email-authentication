@@ -73,6 +73,13 @@ return [
             'expire' => 60,
         ],
 
+        'social' => [
+            'driver' => 'redis',
+            'connection' => 'default',
+            'queue'  => 'social',
+            'expire' => 60,
+        ],
+
     ],
 
     /*

@@ -15,3 +15,4 @@
         <a href="{{ route('social.redirect', ['provider' => 'github']) }}" class="btn btn-lg waves-effect waves-light btn-block github">GitHub</a>
     </div>
 </div>
+

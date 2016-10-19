@@ -36,6 +36,8 @@ Route::group(['middleware' => 'auth:all'], function()
 {
     $a = 'authenticated.';
     Route::get('/logout', ['as' => $a . 'logout', 'uses' => 'Auth\LoginController@logout']);
+    Route::get('/activate/{token}', ['as' => $a . 'activate', 'uses' => 'ActivateController@activate']);
+    Route::get('/activate', ['as' => $a . 'activation-resend', 'uses' => 'ActivateController@resend']);
 });
 
 Auth::routes(['login' => 'auth.login']);

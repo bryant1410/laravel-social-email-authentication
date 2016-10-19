@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
+use App\Traits\ActivationTrait;
 use App\Models\User;
 use App\Models\Role;
 
@@ -21,7 +22,7 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers;
+    use RegistersUsers, ActivationTrait;
 
     /**
      * Where to redirect users after login / registration.
@@ -88,10 +89,14 @@ class RegisterController extends Controller
             'last_name' => $data['last_name'],
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
+            'token' => str_random(64),
+            'activated' => !config('settings.activation')
         ]);
 
         $role = Role::whereName('user')->first();
         $user->assignRole($role);
+
+        $this->initiateEmailActivation($user);
 
         return $user;
 
