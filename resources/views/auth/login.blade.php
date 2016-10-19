@@ -10,7 +10,7 @@
 @section('content')
 
 
-        {!! Form::open(['url' => url('/login'), 'class' => 'form-signin', 'data-parsley-validate' ] ) !!}
+        {!! Form::open(['url' => url('login'), 'class' => 'form-signin', 'data-parsley-validate' ] ) !!}
 
 
         @include('includes.status')
@@ -51,7 +51,7 @@
         </div>
 
         <button class="btn btn-lg btn-primary btn-block login-btn" type="submit">Sign in</button>
-        <p><a href="{{ url('/password/reset') }}">Forgot password?</a></p>
+        <p><a href="{{ url('password/reset') }}">Forgot password?</a></p>
 
         <p class="or-social">Or Use Social Login</p>
 

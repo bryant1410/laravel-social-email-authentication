@@ -15,9 +15,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.1.1/css/mdb.min.css">
 
-    <!-- Custom styles for this template -->
-    {{--<link rel="stylesheet" href="/assets/css/navbar-static-top.css">--}}
-
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
     <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -57,17 +54,17 @@
                     </li>
                     @if(!Auth::check())
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/login') }}"> Login</a>
+                        <a class="nav-link" href="{{ url('login') }}"> Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/register') }}"> Register</a>
+                        <a class="nav-link" href="{{ url('register') }}"> Register</a>
                     </li>
                     @else
                     <li class="nav-item">
                         <a class="nav-link" href="#"> {{ Auth::user()->first_name }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('/logout') }}"> Logout</a>
+                        <a class="nav-link" href="{{ url('logout') }}"> Logout</a>
                     </li>
                     @endif
                 </ul>
