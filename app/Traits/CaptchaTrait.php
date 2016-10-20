@@ -15,9 +15,9 @@ trait CaptchaTrait {
         $recaptcha = new ReCaptcha($secret);
         $resp = $recaptcha->verify($response, $remoteip);
         if ($resp->isSuccess()) {
-            return true;
+            return 1;
         } else {
-            return false;
+            return 0;
         }
 
     }

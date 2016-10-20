@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Traits\CaptchaTrait;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Controllers\Controller;
@@ -22,7 +23,7 @@ class RegisterController extends Controller
     |
     */
 
-    use RegistersUsers, ActivationTrait;
+    use RegistersUsers, ActivationTrait, CaptchaTrait;
 
     /**
      * Where to redirect users after login / registration.
@@ -52,14 +53,17 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
 
-        return Validator::make($data,
+        $data['captcha'] = $this->captchaCheck();
+
+        $validator = Validator::make($data,
             [
                 'first_name'            => 'required',
                 'last_name'             => 'required',
                 'email'                 => 'required|email|unique:users',
                 'password'              => 'required|min:6|max:20',
                 'password_confirmation' => 'required|same:password',
-                'g-recaptcha-response'  => 'required'
+                'g-recaptcha-response'  => 'required',
+                'captcha'               => 'required|min:1'
             ],
             [
                 'first_name.required'   => 'First Name is required',
@@ -69,9 +73,12 @@ class RegisterController extends Controller
                 'password.required'     => 'Password is required',
                 'password.min'          => 'Password needs to have at least 6 characters',
                 'password.max'          => 'Password maximum length is 20 characters',
-                'g-recaptcha-response.required' => 'Captcha is required'
+                'g-recaptcha-response.required' => 'Captcha is required',
+                'captcha.min'           => 'Wrong captcha, please try again.'
             ]
-            );
+        );
+
+        return $validator;
 
     }
 
