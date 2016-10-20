@@ -1,9 +1,17 @@
 # Laravel Social and Email Authentication
 
-This project is related to tutorial from [Codingo Tuts].
+This project is related to tutorial from [Codingo Tuts], you can checkout [Live Demo Here :zap:].
 
-In tutorial I am creating Laravel application  with email authentication and user roles, but I am also using [Laravel Socialite] for Facebook and Twitter logins.
+In the tutorial I am creating Laravel application  with email authentication and user roles, but I am also using [Laravel Socialite] for Facebook, Twitter, Google+ and GitHub logins.
 At the end of this tutorial you will be able to use any other social provider in matter of seconds.
+
+Application posses built-in email activation service, which can be stopped or started by changing ACTIVATION flag in .env file.
+
+On registration form via email, users are required to complete Google Re-captcha.
+
+Frontend uses Bootstrap 4 and Material Design for Bootstrap free theme.
+
+![Login Page Design](https://tuts.codingo.me/wp-content/uploads/2016/10/auth-login.png "Login Page")
 
 ### What is covered
 Everything is covered there so new Laravel developers can grasp it quickly. I am following simple plan while I am developing:
@@ -20,12 +28,12 @@ This plan is not strict and if you are familiar with something you may just skip
 
 ### Implementing new Social Providers in under 20 seconds
 
-Main beauty is modular approach in implementing new Socialite providers. Application uses to routes one for redirecting user to certain social site and other to accept response from that site:
+Main beauty is modular approach in implementing new Socialite providers. Application uses 2 routes one for redirecting user to certain social site and other to accept response from that site:
 
 ```php
-s = 'social.';
-Route::get('/social/redirect/{provider}',   ['as' => $s . 'redirect',   'uses' => 'Auth\AuthController@getSocialRedirect']);
-Route::get('/social/handle/{provider}',     ['as' => $s . 'handle',     'uses' => 'Auth\AuthController@getSocialHandle']);
+$s = 'social.';
+Route::get('/social/redirect/{provider}',   ['as' => $s . 'redirect',   'uses' => 'Auth\SocialController@getSocialRedirect']);
+Route::get('/social/handle/{provider}',     ['as' => $s . 'handle',     'uses' => 'Auth\SocialController@getSocialHandle']);
 ```
 
 To add new social provider you just need to insert new element in services.php like this:
@@ -53,7 +61,7 @@ route('social.redirect', ['provider' => 'twitter']);
 
 ###Todo's
 Project is not over, I will publish few more tutorials regarding this matter. You can expect:
-  - Handling when user disallows social app access
+  - ~~Handling when user disallows social app access~~
   - Taking emails of users who sign-up over Twitter and other providers which don't share that data
   - User account actions, like change password, change email etc
 
@@ -65,3 +73,4 @@ Project is not over, I will publish few more tutorials regarding this matter. Yo
 [Creating table and model for Social logins]:http://tuts.codingo.me/laravel-social-and-email-authentication/#pull-socialite
 [Creating Social Logic]:http://tuts.codingo.me/laravel-social-and-email-authentication/#social-logic
 [Codingo Tuts]:http://tuts.codingo.me/laravel-social-and-email-authentication
+[Live Demo Here :zap:]:http://demo1.codingo.me
