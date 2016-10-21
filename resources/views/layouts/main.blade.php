@@ -11,6 +11,13 @@
     <meta name="author" content="Ivan Radunovic">
     <link rel="shortcut icon" href="https://tuts.codingo.me/assets/img/box.png">
 
+    <meta property="og:url" content="http://demo1.codingo.me/">
+    <meta property="og:title" content="Live Demo of Laravel 5.3 app with Multi-authentication and Social logins">
+    <meta property="og:description" content="Laravel 5.3 bootstrap app with Multi Auth, Social and Email Authentication. Google re-Captcha, Facebook, Twitter, G+ and much more...">
+    <meta property="og:image" content="https://tuts.codingo.me/wp-content/uploads/2016/10/social-og.png">
+    <meta property="og:site_name" content="Codingo Tuts">
+    <meta property="og:image:type" content="image/png">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.3/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.1.1/css/mdb.min.css">
