@@ -12,4 +12,11 @@ class UserController extends Controller
 
     }
 
+    public function getProtected()
+    {
+
+        return view('panels.user.protected');
+
+    }
+
 }

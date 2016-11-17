@@ -30,6 +30,12 @@ Route::group(['prefix' => 'user', 'middleware' => 'auth:user'], function()
     $a = 'user.';
     Route::get('/', ['as' => $a . 'home', 'uses' => 'UserController@getHome']);
 
+    Route::group(['middleware' => 'activated'], function ()
+    {
+        $m = 'activated.';
+        Route::get('protected', ['as' => $m . 'protected', 'uses' => 'UserController@getProtected']);
+    });
+
 });
 
 Route::group(['middleware' => 'auth:all'], function()
@@ -38,6 +44,9 @@ Route::group(['middleware' => 'auth:all'], function()
     Route::get('/logout', ['as' => $a . 'logout', 'uses' => 'Auth\LoginController@logout']);
     Route::get('/activate/{token}', ['as' => $a . 'activate', 'uses' => 'ActivateController@activate']);
     Route::get('/activate', ['as' => $a . 'activation-resend', 'uses' => 'ActivateController@resend']);
+    Route::get('not-activated', ['as' => 'not-activated', 'uses' => function () {
+        return view('errors.not-activated');
+    }]);
 });
 
 Auth::routes(['login' => 'auth.login']);
