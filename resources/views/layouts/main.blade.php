@@ -58,21 +58,21 @@
                         <a class="nav-link" href="https://github.com/codingo-me/laravel-social-email-authentication" target="_blank"><i class="fa fa-download"></i>  Download</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('public.home')  }}"> Home</a>
+                        <a class="nav-link" href="{{ route('public.home')  }}"><i class="fa fa-home"></i> Home</a>
                     </li>
                     @if(!Auth::check())
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('login') }}"> Login</a>
+                        <a class="nav-link" href="{{ url('login') }}"><i class="fa fa-sign-in"></i> Login</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('register') }}"> Register</a>
+                        <a class="nav-link" href="{{ url('register') }}"><i class="fa fa-registered"></i> Register</a>
                     </li>
                     @else
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ Auth::user()->homeUrl() }}"> {{ Auth::user()->first_name }}</a>
+                        <a class="nav-link" href="{{ Auth::user()->homeUrl() }}"><i class="fa fa-user"></i> {{ Auth::user()->first_name }}</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ url('logout') }}"> Logout</a>
+                        <a class="nav-link" href="{{ url('logout') }}"><i class="fa fa-sign-out"></i> Logout</a>
                     </li>
                     @endif
                 </ul>
