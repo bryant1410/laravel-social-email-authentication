@@ -5,6 +5,7 @@ namespace App\Logic\Activation;
 use App\Models\Activation;
 use App\Models\User;
 use App\Notifications\SendActivationEmail;
+use Carbon\Carbon;
 
 class ActivationRepository
 {
@@ -32,4 +33,10 @@ class ActivationRepository
 
     }
 
+    public function deleteExpiredActivations()
+    {
+
+        Activation::where('created_at', '<=', Carbon::now()->subHours(72))->delete();
+
+    }
 }
