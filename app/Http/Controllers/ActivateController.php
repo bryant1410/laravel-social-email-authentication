@@ -46,10 +46,16 @@ class ActivateController extends Controller
 
     public function resend()
     {
-        $this->initiateEmailActivation(auth()->user());
+        if (auth()->user()->activated == false) {
+            $this->initiateEmailActivation(auth()->user());
+
+            return redirect()->route('public.home')
+                ->with('status', 'success')
+                ->with('message', 'Activation email sent.');
+        }
 
         return redirect()->route('public.home')
             ->with('status', 'success')
-            ->with('message', 'Activation email sent.');
+            ->with('message', 'Already activated.');
     }
 }
