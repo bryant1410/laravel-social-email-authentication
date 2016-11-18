@@ -84,7 +84,7 @@ class SocialController extends Controller
 
                 $newSocialUser->password = bcrypt(str_random(16));
                 $newSocialUser->token = str_random(64);
-                $newSocialUser->activated = !config('settings.activation');
+                $newSocialUser->activated = true; //!config('settings.activation');
                 $newSocialUser->save();
 
                 $socialData = new Social;
