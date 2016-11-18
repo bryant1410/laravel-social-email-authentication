@@ -61,4 +61,15 @@ class User extends Model implements AuthenticatableContract, CanResetPasswordCon
     {
         return $this->hasMany('App\Models\Social');
     }
+
+    public function homeUrl()
+    {
+        if ($this->hasRole('user')) {
+            $url = route('user.home');
+        } else {
+            $url = route('admin.home');
+        }
+
+        return $url;
+    }
 }

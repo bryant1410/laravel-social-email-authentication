@@ -69,7 +69,7 @@
                     </li>
                     @else
                     <li class="nav-item">
-                        <a class="nav-link" href="#"> {{ Auth::user()->first_name }}</a>
+                        <a class="nav-link" href="{{ Auth::user()->homeUrl() }}"> {{ Auth::user()->first_name }}</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('logout') }}"> Logout</a>
