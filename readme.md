@@ -59,7 +59,7 @@ route('social.redirect', ['provider' => 'facebook']);
 route('social.redirect', ['provider' => 'twitter']);
 ```
 
-###Todo's
+### Todo's
 Project is not over, I will publish few more tutorials regarding this matter. You can expect:
   - ~~Handling when user disallows social app access~~
   - Taking emails of users who sign-up over Twitter and other providers which don't share that data
